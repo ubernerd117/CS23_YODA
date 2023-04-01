@@ -29,8 +29,8 @@ class _MapScreenState extends State<MapScreen> {
       LatLng(originBuilding.latitude, originBuilding.longitude),
       LatLng(destinationBuilding.latitude, destinationBuilding.longitude),
     ],
-    width: 4,
-    color: const Color(0xaab123ff),
+    width: 2,
+    color: const Color.fromARGB(255, 100, 100, 255),
   );
 
   @override
@@ -44,7 +44,7 @@ class _MapScreenState extends State<MapScreen> {
         LatLng(destinationBuilding.latitude, destinationBuilding.longitude),
       ],
       width: 4,
-      color: const Color(0xaab123ff),
+      color: const Color.fromARGB(255, 100, 100, 255),
     );
     print(originBuilding.name);
     print(path.polylineId);

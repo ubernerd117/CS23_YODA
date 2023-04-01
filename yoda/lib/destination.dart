@@ -82,7 +82,8 @@ class _OriginScreenState extends State<OriginScreen> {
             child: DropdownButton<Building>(
               value: value,
               items: buildings.map(buildMenuItem).toList(),
-              onChanged: (value) => setState(() => this.value = value),
+              onChanged: (value) =>
+                  setState(() => destinationBuilding = value as Building),
             ),
           ),
         ],
