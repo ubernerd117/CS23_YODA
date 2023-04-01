@@ -16,7 +16,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
-        backgroundColor: Colors.orange,
+        backgroundColor: Color.fromRGBO(253, 80, 0, 1),
         title: const Text('Spot this building'),
       ),
     );
@@ -31,22 +31,36 @@ class OriginScreen extends StatefulWidget {
 }
 
 class _OriginScreenState extends State<OriginScreen> {
+  Building? value;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
+        backgroundColor: Color.fromRGBO(253, 80, 0, 1),
         title: const Text('Which building are you at?'),
         centerTitle: false,
       ),
-      body: Container(
-        height: 624,
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: buildings.length, // update the itemCount property
-          itemBuilder: (context, index) => buildCard(buildings[
-              index]), // pass the Building object to the buildCard method
-        ),
+      body: Column(
+        children: [
+          Container(
+            height: 624,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: buildings.length, // update the itemCount property
+              itemBuilder: (context, index) => buildCard(buildings[
+                  index]), // pass the Building object to the buildCard method
+            ),
+          ),
+          Text('\nWhere do you want to go?', style: TextStyle(fontSize: 20)),
+          Center(
+            child: DropdownButton<Building>(
+              value: value,
+              items: buildings.map(buildMenuItem).toList(),
+              onChanged: (value) => setState(() => this.value = value),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -57,12 +71,19 @@ class _OriginScreenState extends State<OriginScreen> {
         color: Colors.brown,
         child: Column(
           children: [
-            Image.asset(
-              building
-                  .imageUrl, // use the imageUrl property of the Building object
-              fit: BoxFit.contain,
-              width: 450,
-              height: 600,
+            Material(
+              child: Ink.image(
+                image: AssetImage(building
+                    .imageUrl), // use the imageUrl property of the Building object
+                fit: BoxFit.contain,
+                width: 450,
+                height: 600,
+                child: InkWell(
+                  onDoubleTap: () {
+                    originBuilding = building;
+                  },
+                ),
+              ),
             ),
             Text(
               building.name, // use the name property of the Building object
@@ -70,5 +91,10 @@ class _OriginScreenState extends State<OriginScreen> {
             ),
           ],
         ),
+      );
+
+  DropdownMenuItem<Building> buildMenuItem(Building item) => DropdownMenuItem(
+        value: item,
+        child: Text(item.name),
       );
 }

@@ -16,6 +16,20 @@ class Building {
   });
 }
 
+Building originBuilding = Building(
+  name: "Hayes Hall",
+  imageUrl: "assets/images/Hayes_Hall.jpg",
+  latitude: 41.377925,
+  longitude: -83.639979,
+);
+
+Building destinationBuilding = Building(
+  name: "Hayes Hall",
+  imageUrl: "assets/images/Hayes_Hall.jpg",
+  latitude: 41.377925,
+  longitude: -83.639979,
+);
+
 final List<Building> buildings = [
   // create a list of Building objects
   Building(

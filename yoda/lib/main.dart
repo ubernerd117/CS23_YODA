@@ -47,8 +47,9 @@ class _YodaState extends State<Yoda> {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: currNavIndex,
           selectedIconTheme: const IconThemeData(size: 30),
-          selectedItemColor: Colors.orange,
-          selectedLabelStyle: const TextStyle(color: Colors.orange),
+          selectedItemColor: Color.fromRGBO(253, 80, 0, 1),
+          selectedLabelStyle:
+              const TextStyle(color: Color.fromRGBO(253, 80, 0, 1)),
           items: const [
             BottomNavigationBarItem(
               icon: Icon(
@@ -97,7 +98,7 @@ class factButton extends StatefulWidget {
 }
 
 class _factButtonState extends State<factButton> {
-  String _currentJoke = "Press the button for a joke!";
+  String _currentFact = "Tap for a Falcon Fun Fact!";
 
   @override
   Widget build(BuildContext context) {
@@ -108,15 +109,15 @@ class _factButtonState extends State<factButton> {
         height: 78,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange,
+              backgroundColor: Color.fromRGBO(253, 80, 0, 1),
               textStyle: const TextStyle(fontSize: 18)),
           onPressed: () {
             setState(() {
-              _currentJoke =
+              _currentFact =
                   widget.funFacts[Random().nextInt(widget.funFacts.length)];
             });
           },
-          child: Text(_currentJoke),
+          child: Text(_currentFact),
         ),
       ),
     );
