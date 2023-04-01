@@ -38,17 +38,54 @@ final List<Building> buildings = [
     latitude: 41.377925,
     longitude: -83.639979,
   ),
+
   Building(
     name: "BTSU",
     imageUrl: "assets/images/BTSU.jpg",
-    latitude: 41.377925,
-    longitude: -83.639979,
+    latitude: 41.377455,
+    longitude: -83.640271,
+  ),
+  Building(
+    name: "Shatzel Hall",
+    imageUrl: "assets/images/Shatzel_Hall.jpg",
+    latitude: 41.376327,
+    longitude: -83.642559,
+  ),
+  Building(
+    name: "Founders Hall",
+    imageUrl: "assets/images/Founders_Hall.jpg",
+    latitude: 41.375353,
+    longitude: -83.641806,
+  ),
+  Building(
+    name: "McFall Hall",
+    imageUrl: "assets/images/McFall_Hall.jpg",
+    latitude: 41.375654,
+    longitude: -83.640965,
+  ),
+  Building(
+    name: "Kuhlin Center",
+    imageUrl: "assets/images/Kuhlin_Center.jpg",
+    latitude: 41.375126,
+    longitude: -83.640155,
+  ),
+  Building(
+    name: "Maurer Center",
+    imageUrl: "assets/images/Maurer_Center.jpg",
+    latitude: 41.375182,
+    longitude: -83.639148,
   ),
   Building(
     name: "Carillon Hall",
     imageUrl: "assets/images/Carillon_Hall.jpg",
     latitude: 41.375662,
     longitude: -83.637580,
+  ),
+  Building(
+    name: "East Hall",
+    imageUrl: "assets/images/East_Hall.jpg",
+    latitude: 41.376247,
+    longitude: -83.636846,
   ),
   Building(
     name: "Central Hall",
@@ -63,9 +100,9 @@ final List<Building> buildings = [
     longitude: -83.638251,
   ),
   Building(
-    name: "Founders Hall",
-    imageUrl: "assets/images/Founders_Hall.jpg",
-    latitude: 41.375353,
-    longitude: -83.641806,
+    name: "Olscamp_Hall",
+    imageUrl: "assets/images/Olscamp_Hall.jpg",
+    latitude: 41.377968,
+    longitude: -83.637480,
   ),
 ];
