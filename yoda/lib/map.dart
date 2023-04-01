@@ -13,14 +13,7 @@ class _MapScreenState extends State<MapScreen> {
         buildings[0].longitude), //LatLng(37.773972, -122.431297),
     zoom: 16,
   );
-  // static final marker = Marker(
-  //   markerId: const MarkerId("Testing Marker"),
-  //   infoWindow: const InfoWindow(
-  //     title: 'Marker title',
-  //   ),
-  //   icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueAzure),
-  //   position: const LatLng(37.773972, -122.431297),
-  // );
+
   static final List<Marker> buildingMarkers = buildings.map((b) {
     return Marker(
       markerId: MarkerId(b.name),
@@ -29,7 +22,16 @@ class _MapScreenState extends State<MapScreen> {
       icon: BitmapDescriptor.defaultMarker,
     );
   }).toList();
-
+  static final Polyline path = Polyline(
+    polylineId:
+        PolylineId('${originBuilding.name}->${destinationBuilding.name}'),
+    points: [
+      LatLng(originBuilding.latitude, originBuilding.longitude),
+      LatLng(destinationBuilding.latitude, destinationBuilding.longitude),
+    ],
+    width: 4,
+    color: const Color(0xaab123ff),
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +45,14 @@ class _MapScreenState extends State<MapScreen> {
           buildingMarkers[3],
           buildingMarkers[4],
           buildingMarkers[5],
+          buildingMarkers[6],
+          buildingMarkers[7],
+          buildingMarkers[8],
+          buildingMarkers[9],
+          buildingMarkers[10],
+          buildingMarkers[11],
         },
+        // polylines: {path},
         initialCameraPosition: _initialCameraPosition,
       ),
     );
