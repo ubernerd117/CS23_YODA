@@ -58,8 +58,8 @@ final List<Building> buildings = [
     longitude: -83.641806,
   ),
   Building(
-    name: "McFall Hall",
-    imageUrl: "assets/images/McFall_Hall.jpg",
+    name: "McFall Center",
+    imageUrl: "assets/images/McFall_Center.jpg",
     latitude: 41.375654,
     longitude: -83.640965,
   ),
@@ -100,7 +100,7 @@ final List<Building> buildings = [
     longitude: -83.638251,
   ),
   Building(
-    name: "Olscamp_Hall",
+    name: "Olscamp Hall",
     imageUrl: "assets/images/Olscamp_Hall.jpg",
     latitude: 41.377968,
     longitude: -83.637480,
