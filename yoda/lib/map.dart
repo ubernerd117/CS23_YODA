@@ -14,10 +14,10 @@ class _MapScreenState extends State<MapScreen> {
     zoom: 16,
   );
 
-  static final List<Marker> buildingMarkers = buildings.map((b) {
+  static List<Marker> buildingMarkers = buildings.map((b) {
     return Marker(
       markerId: MarkerId(b.name),
-      infoWindow: InfoWindow(title: b.name, snippet: b.imageUrl),
+      infoWindow: InfoWindow(title: b.name, snippet: b.description),
       position: LatLng(b.latitude, b.longitude),
       icon: BitmapDescriptor.defaultMarker,
     );
@@ -35,7 +35,24 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print("Help me");
+    for (var i = 0; i < buildingMarkers.length; i++) {
+      var element = buildingMarkers[i];
+      var newIcon;
+      if (element.markerId.value == originBuilding.name ||
+          element.markerId.value == destinationBuilding.name) {
+        newIcon =
+            BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen);
+      } else {
+        newIcon = BitmapDescriptor.defaultMarker;
+      }
+      var newElement = Marker(
+        markerId: element.markerId,
+        infoWindow: element.infoWindow,
+        position: element.position,
+        icon: newIcon,
+      );
+      buildingMarkers[i] = newElement;
+    }
     path = Polyline(
       polylineId:
           PolylineId('${originBuilding.name}->${destinationBuilding.name}'),
@@ -46,8 +63,6 @@ class _MapScreenState extends State<MapScreen> {
       width: 4,
       color: const Color.fromARGB(255, 100, 100, 255),
     );
-    print(originBuilding.name);
-    print(path.polylineId);
     return Scaffold(
       body: GoogleMap(
         myLocationButtonEnabled: false,
