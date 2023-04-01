@@ -17,7 +17,7 @@ class _DestinationScreenState extends State<DestinationScreen> {
       appBar: AppBar(
         centerTitle: false,
         backgroundColor: Color.fromRGBO(253, 80, 0, 1),
-        title: const Text('Spot this building'),
+        title: const Text('You\'ve Reached:'),
       ),
       body: Column(
         children: [
@@ -31,16 +31,22 @@ class _DestinationScreenState extends State<DestinationScreen> {
               ),
             ),
           ),
-          Text(
-            destinationBuilding.name,
-            // use the name property of the Building object
-            style: const TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+          Center(
+            child: Text(
+              destinationBuilding.name,
+              // use the name property of the Building object
+              style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
+            ),
           ),
-          Text(
-            destinationBuilding.description,
-            // use the name property of the Building object
-            style: const TextStyle(fontSize: 20, color: Colors.black),
+          Center(
+            child: Text(
+              destinationBuilding.description,
+              // use the name property of the Building object
+              style: const TextStyle(fontSize: 20, color: Colors.black),
+            ),
           ),
         ],
       ),
@@ -63,7 +69,7 @@ class _OriginScreenState extends State<OriginScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(253, 80, 0, 1),
-        title: const Text('Which building are you at?'),
+        title: const Text('Swipe and double tap to set origin'),
         centerTitle: false,
       ),
       body: Column(
@@ -77,13 +83,27 @@ class _OriginScreenState extends State<OriginScreen> {
                   index]), // pass the Building object to the buildCard method
             ),
           ),
-          Text('\nWhere do you want to go?', style: TextStyle(fontSize: 20)),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text('Choose a destination', style: TextStyle(fontSize: 20)),
+          ),
           Center(
-            child: DropdownButton<Building>(
-              value: value,
-              items: buildings.map(buildMenuItem).toList(),
-              onChanged: (value) =>
-                  setState(() => destinationBuilding = value as Building),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                border:
+                    Border.all(color: Color.fromRGBO(79, 44, 29, 1), width: 2),
+              ),
+              child: DropdownButton<Building>(
+                value: value,
+                items: buildings.map(buildMenuItem).toList(),
+                onChanged: (value) =>
+                    //   setState(() => destinationBuilding = value as Building),
+                    setState(() {
+                  this.value = value;
+                  destinationBuilding = value as Building;
+                }),
+              ),
             ),
           ),
         ],
@@ -94,7 +114,7 @@ class _OriginScreenState extends State<OriginScreen> {
   Widget buildCard(Building building) => Container(
         width: 450,
         height: 620,
-        color: Colors.brown,
+        color: Color.fromRGBO(79, 44, 29, 1),
         child: Column(
           children: [
             Material(
