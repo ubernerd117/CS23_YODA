@@ -23,10 +23,10 @@ class _DestinationScreenState extends State<DestinationScreen> {
 }
 
 class OriginScreen extends StatefulWidget {
-  const OriginScreen({super.key});
+  const OriginScreen({Key? key}) : super(key: key);
 
   @override
-  State<OriginScreen> createState() => _OriginScreenState();
+  _OriginScreenState createState() => _OriginScreenState();
 }
 
 class _OriginScreenState extends State<OriginScreen> {
@@ -38,23 +38,31 @@ class _OriginScreenState extends State<OriginScreen> {
         title: const Text('Which building are you at?'),
         centerTitle: false,
       ),
-      body: ListView(
-        scrollDirection: Axis.horizontal,
-        children: [
-          buildCard(),
-          SizedBox(width: 12),
-          buildCard(),
-          SizedBox(width: 12),
-          buildCard(),
-          SizedBox(width: 12),
-        ],
+      body: Container(
+        height: 624,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: 12,
+          itemBuilder: (context, index) => buildCard(),
+        ),
       ),
     );
   }
 }
 
 Widget buildCard() => Container(
-      width: 400,
-      height: 300,
-      color: Colors.red,
-    );
+    width: 450,
+    height: 620,
+    color: Colors.brown,
+    child: Column(
+      children: [
+        Image.asset(
+          'assets/images/BTSU.jpg',
+          fit: BoxFit.contain,
+          width: 450,
+          height: 600,
+        ),
+        const Text('BUILDING NAME',
+            style: TextStyle(fontSize: 20, color: Colors.white))
+      ],
+    ));
