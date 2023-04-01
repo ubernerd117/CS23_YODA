@@ -127,7 +127,7 @@ class _OriginScreenState extends State<OriginScreen> {
                 child: InkWell(
                   onDoubleTap: () {
                     originBuilding = building;
-                    print("new origin building: ${building.name}");
+                    //print("new origin building: ${building.name}");
                   },
                 ),
               ),

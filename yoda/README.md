@@ -1,16 +1,21 @@
-# yoda
+# Yoda
 
-A new Flutter project.
+## A cross platform App for traversing the campus using pictures
 
-## Getting Started
+This app has 3 "pages":
 
-This project is a starting point for a Flutter application.
+Location page: This is where you swipe through a bunch of pictures
+                and double tap the picture that looks like the building that is 
+                closest to you. This sets the origin point as that building.
 
-A few resources to get you started if this is your first Flutter project:
+                Then, from the drop down menu, pick the location you want the directions to.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Directions page: This is where you would find the direction in which you need to 
+                 travel if you want to go to your selected building. 
+                 The markers on the map also contain information about the nearby buildings.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Destination page: at any point if you want to check if you are going to the right
+                  place, you can go to destination to check the location's facilites.
+                  and it also serves as a visual queue to the user so they can
+                  be sure that they are walking into the right building.
+            
