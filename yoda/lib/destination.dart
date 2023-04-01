@@ -19,6 +19,31 @@ class _DestinationScreenState extends State<DestinationScreen> {
         backgroundColor: Color.fromRGBO(253, 80, 0, 1),
         title: const Text('Spot this building'),
       ),
+      body: Column(
+        children: [
+          Container(
+            width: 450,
+            height: 600,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(destinationBuilding.imageUrl),
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Text(
+            destinationBuilding.name,
+            // use the name property of the Building object
+            style: const TextStyle(
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+          Text(
+            destinationBuilding.description,
+            // use the name property of the Building object
+            style: const TextStyle(fontSize: 20, color: Colors.black),
+          ),
+        ],
+      ),
     );
   }
 }
