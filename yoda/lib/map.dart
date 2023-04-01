@@ -22,7 +22,7 @@ class _MapScreenState extends State<MapScreen> {
       icon: BitmapDescriptor.defaultMarker,
     );
   }).toList();
-  static final Polyline path = Polyline(
+  static Polyline path = Polyline(
     polylineId:
         PolylineId('${originBuilding.name}->${destinationBuilding.name}'),
     points: [
@@ -32,8 +32,22 @@ class _MapScreenState extends State<MapScreen> {
     width: 4,
     color: const Color(0xaab123ff),
   );
+
   @override
   Widget build(BuildContext context) {
+    print("Help me");
+    path = Polyline(
+      polylineId:
+          PolylineId('${originBuilding.name}->${destinationBuilding.name}'),
+      points: [
+        LatLng(originBuilding.latitude, originBuilding.longitude),
+        LatLng(destinationBuilding.latitude, destinationBuilding.longitude),
+      ],
+      width: 4,
+      color: const Color(0xaab123ff),
+    );
+    print(originBuilding.name);
+    print(path.polylineId);
     return Scaffold(
       body: GoogleMap(
         myLocationButtonEnabled: false,
@@ -52,7 +66,7 @@ class _MapScreenState extends State<MapScreen> {
           buildingMarkers[10],
           buildingMarkers[11],
         },
-        // polylines: {path},
+        polylines: {path},
         initialCameraPosition: _initialCameraPosition,
       ),
     );
