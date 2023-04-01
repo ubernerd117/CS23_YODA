@@ -1,6 +1,7 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'buildings.dart';
 
 class DestinationScreen extends StatefulWidget {
   const DestinationScreen({super.key});
@@ -42,27 +43,32 @@ class _OriginScreenState extends State<OriginScreen> {
         height: 624,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: 12,
-          itemBuilder: (context, index) => buildCard(),
+          itemCount: buildings.length, // update the itemCount property
+          itemBuilder: (context, index) => buildCard(buildings[
+              index]), // pass the Building object to the buildCard method
         ),
       ),
     );
   }
-}
 
-Widget buildCard() => Container(
-    width: 450,
-    height: 620,
-    color: Colors.brown,
-    child: Column(
-      children: [
-        Image.asset(
-          'assets/images/BTSU.jpg',
-          fit: BoxFit.contain,
-          width: 450,
-          height: 600,
+  Widget buildCard(Building building) => Container(
+        width: 450,
+        height: 620,
+        color: Colors.brown,
+        child: Column(
+          children: [
+            Image.asset(
+              building
+                  .imageUrl, // use the imageUrl property of the Building object
+              fit: BoxFit.contain,
+              width: 450,
+              height: 600,
+            ),
+            Text(
+              building.name, // use the name property of the Building object
+              style: const TextStyle(fontSize: 20, color: Colors.white),
+            ),
+          ],
         ),
-        const Text('BUILDING NAME',
-            style: TextStyle(fontSize: 20, color: Colors.white))
-      ],
-    ));
+      );
+}
