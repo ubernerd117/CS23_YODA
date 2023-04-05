@@ -22,12 +22,7 @@ class _YodaState extends State<Yoda> {
 
   final List<Widget> screens = [
     OriginScreen(),
-    Column(
-      children: [
-        SizedBox(width: double.infinity, height: 700, child: MapScreen()),
-        factButton(funFacts: funFacts),
-      ],
-    ),
+    NavigationScreen(),
     DestinationScreen()
   ];
 
@@ -105,8 +100,8 @@ class _factButtonState extends State<factButton> {
     return BottomAppBar(
       elevation: 0,
       child: SizedBox(
-        width: double.infinity,
-        height: 78,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height * 0.2,
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(
               backgroundColor: Color.fromRGBO(253, 80, 0, 1),
@@ -121,5 +116,26 @@ class _factButtonState extends State<factButton> {
         ),
       ),
     );
+  }
+}
+
+class NavigationScreen extends StatefulWidget {
+  const NavigationScreen({super.key});
+
+  @override
+  State<NavigationScreen> createState() => _NavigationScreenState();
+}
+
+class _NavigationScreenState extends State<NavigationScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Column(children: [
+      SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: 450,
+          child: MapScreen()),
+      factButton(funFacts: funFacts),
+    ]));
   }
 }

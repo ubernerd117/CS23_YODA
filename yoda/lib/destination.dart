@@ -1,6 +1,7 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:yoda/main.dart';
 import 'buildings.dart';
 
 class DestinationScreen extends StatefulWidget {
@@ -13,6 +14,8 @@ class DestinationScreen extends StatefulWidget {
 class _DestinationScreenState extends State<DestinationScreen> {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         centerTitle: false,
@@ -22,8 +25,8 @@ class _DestinationScreenState extends State<DestinationScreen> {
       body: Column(
         children: [
           Container(
-            width: 450,
-            height: 600,
+            width: screenWidth,
+            height: screenHeight * 0.6,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(destinationBuilding.imageUrl),
@@ -66,6 +69,8 @@ class _OriginScreenState extends State<OriginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(253, 80, 0, 1),
@@ -75,7 +80,7 @@ class _OriginScreenState extends State<OriginScreen> {
       body: Column(
         children: [
           Container(
-            height: 624,
+            height: screenHeight * 0.7,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: buildings.length, // update the itemCount property
@@ -89,20 +94,28 @@ class _OriginScreenState extends State<OriginScreen> {
           ),
           Center(
             child: Container(
+              height: screenHeight * 0.03,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 border:
                     Border.all(color: Color.fromRGBO(79, 44, 29, 1), width: 2),
               ),
-              child: DropdownButton<Building>(
-                value: value,
-                items: buildings.map(buildMenuItem).toList(),
-                onChanged: (value) =>
-                    //   setState(() => destinationBuilding = value as Building),
-                    setState(() {
-                  this.value = value;
-                  destinationBuilding = value as Building;
-                }),
+              child: SizedBox(
+                height: screenHeight * 0.03,
+                child: DropdownButton<Building>(
+                  value: value,
+                  items: buildings.map(buildMenuItem).toList(),
+                  onChanged: (value) => setState(() {
+                    this.value = value;
+                    destinationBuilding = value as Building;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => NavigationScreen(),
+                      ),
+                    );
+                  }),
+                ),
               ),
             ),
           ),
@@ -112,8 +125,8 @@ class _OriginScreenState extends State<OriginScreen> {
   }
 
   Widget buildCard(Building building) => Container(
-        width: 450,
-        height: 620,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height * 0.1,
         color: Color.fromRGBO(79, 44, 29, 1),
         child: Column(
           children: [
@@ -122,8 +135,8 @@ class _OriginScreenState extends State<OriginScreen> {
                 image: AssetImage(building
                     .imageUrl), // use the imageUrl property of the Building object
                 fit: BoxFit.contain,
-                width: 450,
-                height: 600,
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.65,
                 child: InkWell(
                   onDoubleTap: () {
                     originBuilding = building;
