@@ -6,6 +6,6 @@ Location page: This is where you swipe through a bunch of pictures and double ta
 
 Directions page: This is where you would find the direction in which you need to travel if you want to go to your selected building. The markers on the map also contain information about the nearby buildings.
 
-Destination page: at any point if you want to check if you are going to the right place, you can go to destination to check the location's facilites. and it also serves as a visual queue to the user so they can be sure that they are walking into the right building.
+Destination page: at any point if you want to check if you are going to the right place, you can go to destination to check the location's facilities. and it also serves as a visual queue to the user so they can be sure that they are walking into the right building.
 
 we use bottom navigation bar to traverse the 3 pages
